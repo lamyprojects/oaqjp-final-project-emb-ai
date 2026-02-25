@@ -2,11 +2,11 @@ import requests
 
 def emotion_detector(text_to_analyze):
 
-    url = "https://sn-watson-emotion.labs.skills.network/emotionDetector"
+    url = "https://sn-watson-emotion.labs.skills.network/emotionDetection"
 
     myobj = { "text": text_to_analyze }
 
-    response = requests.post(url, json = myobj)
+    response = requests.post(url, json=myobj)
 
     formatted_response = response.json()
 
@@ -29,4 +29,4 @@ def emotion_detector(text_to_analyze):
         "dominant_emotion": dominant_emotion
     }
 
-    return result
+    return resultS

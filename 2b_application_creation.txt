@@ -1,0 +1,4 @@
+$ python3
+Python 3.10.12 (main, Aug 15 2025, 14:32:43)
+>>> from emotion_detection import emotion_detector
+>>>
