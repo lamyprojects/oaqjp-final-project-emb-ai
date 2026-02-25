@@ -11,13 +11,12 @@ def home():
 def detect_emotion():
     text_to_analyze = request.args.get("textToAnalyze", "")
 
-    # samo prazan input je invalid
+    # Handling blank input error
     if text_to_analyze is None or text_to_analyze.strip() == "":
         return "Invalid text! Please try again!"
 
     result = emotion_detector(text_to_analyze)
 
-    # PRIKAŽI rezultat uvijek (fallback daje brojeve)
     return (
         f"Anger: {result.get('anger')}<br>"
         f"Disgust: {result.get('disgust')}<br>"
