@@ -11,18 +11,20 @@ def home():
 def detect_emotion():
     text_to_analyze = request.args.get("textToAnalyze", "")
 
-    if not text_to_analyze.strip():
+    # samo prazan input je invalid
+    if text_to_analyze is None or text_to_analyze.strip() == "":
         return "Invalid text! Please try again!"
 
     result = emotion_detector(text_to_analyze)
 
+    # PRIKAŽI rezultat uvijek (fallback daje brojeve)
     return (
-        f"Anger: {result['anger']}<br>"
-        f"Disgust: {result['disgust']}<br>"
-        f"Fear: {result['fear']}<br>"
-        f"Joy: {result['joy']}<br>"
-        f"Sadness: {result['sadness']}<br><br>"
-        f"<b>Dominant Emotion: {result['dominant_emotion']}</b>"
+        f"Anger: {result.get('anger')}<br>"
+        f"Disgust: {result.get('disgust')}<br>"
+        f"Fear: {result.get('fear')}<br>"
+        f"Joy: {result.get('joy')}<br>"
+        f"Sadness: {result.get('sadness')}<br><br>"
+        f"<b>Dominant Emotion: {result.get('dominant_emotion')}</b>"
     )
 
 if __name__ == "__main__":
